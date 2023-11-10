@@ -1,0 +1,39 @@
+[Obs-parameter] 
+ Site_name   = MYGI
+ Campaign    = 2002.kaiyo_k4
+ Date(UTC)   = 2020-02-05
+ Date(jday)  = 2020-036
+ Ref.Frame   = ITRF2014
+ SoundSpeed  = ./obsdata/MYGI/MYGI.2002.kaiyo_k4-svp.csv
+
+[Data-file]
+ datacsv     = ./demo_res/MYGI//lambda/MYGI.2002.kaiyo_k4_L-02.0_T0.0-obs.csv
+ N_shot      =  2336
+ used_shot   =  2301
+
+[Site-parameter]
+ Latitude0   =  38.08333333
+ Longitude0  = 142.91666667
+ Height0     =  30.00
+ Stations    = M12 M13 M14 M15
+# Array_cent :   'cntpos_E'  'cntpos_N'  'cntpos_U'
+ Center_ENU  =    -27.3650    -92.9588  -1670.2414
+
+[Model-parameter]
+# MT_Pos     :   'stapos_E'  'stapos_N'  'stapos_U'   'sigma_E'   'sigma_N'   'sigma_U'   'cov_NU'    'cov_UE'    'cov_EN'
+ M12_dPos    =    788.0027   -199.3532  -1676.7581      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+ M13_dPos    =    -31.7371   -932.4682  -1675.6396      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+ M14_dPos    =   -860.2359   -138.3863  -1668.3926      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+ M15_dPos    =     -4.5410    898.1462  -1659.7170      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+ dCentPos    =     -0.2372      0.0566     -0.1146      0.0186      0.0168      0.0083   1.286e-05  -1.411e-06  -3.872e-06
+# ANT_to_TD  :    'forward' 'rightward'  'downward'   'sigma_F'   'sigma_R'   'sigma_D'   'cov_RD'    'cov_DF'    'cov_FR'
+ ATDoffset   =      1.5547     -1.2690     23.7295      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+
+#Inversion-type 2 Loop  1- 1, RMS(TT) =   0.121646 ms, used_shot =  98.5%, reject =   35, Max(dX) =     4.1911, Hgt =  -1670.241
+#Inversion-type 2 Loop  1- 2, RMS(TT) =   0.121646 ms, used_shot =  98.5%, reject =   35, Max(dX) =     0.0001, Hgt =  -1670.241
+#Inversion-type 2 Loop  1- 3, RMS(TT) =   0.121646 ms, used_shot =  98.5%, reject =   35, Max(dX) =     0.0000, Hgt =  -1670.241
+#  ABIC =       17831.007642  misfit =  0.068 _L-02.0_T0.0
+# lambda_0^2 =   0.01000000
+# lambda_g^2 =   0.00100000
+# mu_t =   0.00000000 sec.
+# mu_MT = 0.5000

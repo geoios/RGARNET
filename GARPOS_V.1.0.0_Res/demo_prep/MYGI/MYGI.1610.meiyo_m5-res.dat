@@ -1,0 +1,40 @@
+[Obs-parameter] 
+ Site_name   = MYGI
+ Campaign    = 1610.meiyo_m5
+ Date(UTC)   = 2016-10-17
+ Date(jday)  = 2016-291
+ Ref.Frame   = ITRF2008
+ SoundSpeed  = ./obsdata/MYGI/MYGI.1610.meiyo_m5-svp.csv
+
+[Data-file]
+ datacsv     = ./demo_prep/MYGI/MYGI.1610.meiyo_m5-obs.csv
+ N_shot      =  3853
+ used_shot   =  3852
+
+[Site-parameter]
+ Latitude0   =  38.08333333
+ Longitude0  = 142.91666667
+ Height0     =  30.00
+ Stations    = M12 M13 M14 M15
+# Array_cent :   'cntpos_E'  'cntpos_N'  'cntpos_U'
+ Center_ENU  =    -27.1734    -92.9890  -1670.1825
+
+[Model-parameter]
+# MT_Pos     :   'stapos_E'  'stapos_N'  'stapos_U'   'sigma_E'   'sigma_N'   'sigma_U'   'cov_NU'    'cov_UE'    'cov_EN'
+ M12_dPos    =    787.9833   -199.3272  -1676.7712      0.0097      0.0090      0.0105   5.525e-06  -1.891e-05  -3.032e-06
+ M13_dPos    =    -31.7627   -932.4739  -1675.6901      0.0091      0.0099      0.0105   1.852e-05   2.401e-07  -2.978e-06
+ M14_dPos    =   -860.3419   -138.3774  -1668.4858      0.0098      0.0086      0.0108   5.349e-06   2.182e-05   2.673e-06
+ M15_dPos    =     -4.5724    898.2226  -1659.7829      0.0091      0.0099      0.0111  -2.790e-05   8.889e-07   3.754e-06
+ dCentPos    =      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+# ANT_to_TD  :    'forward' 'rightward'  'downward'   'sigma_F'   'sigma_R'   'sigma_D'   'cov_RD'    'cov_DF'    'cov_FR'
+ ATDoffset   =      1.9392     -0.7653     21.3339      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+
+#Inversion-type 2 Loop  1- 1, RMS(TT) =   0.057154 ms, used_shot = 100.0%, reject =    1, Max(dX) =     3.4080, Hgt =  -1670.183
+#Inversion-type 2 Loop  1- 2, RMS(TT) =   0.057148 ms, used_shot = 100.0%, reject =    1, Max(dX) =     0.0229, Hgt =  -1670.182
+#Inversion-type 2 Loop  1- 3, RMS(TT) =   0.057148 ms, used_shot = 100.0%, reject =    1, Max(dX) =     0.0001, Hgt =  -1670.183
+#Inversion-type 2 Loop  1- 4, RMS(TT) =   0.057148 ms, used_shot = 100.0%, reject =    1, Max(dX) =     0.0000, Hgt =  -1670.183
+#  ABIC =       25953.009402  misfit =  0.015 
+# lambda_0^2 =   0.10000000
+# lambda_g^2 =   0.01000000
+# mu_t =   0.00000000 sec.
+# mu_MT = 0.5000

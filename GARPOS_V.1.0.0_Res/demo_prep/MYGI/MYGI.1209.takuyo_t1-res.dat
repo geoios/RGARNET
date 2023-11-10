@@ -1,0 +1,41 @@
+[Obs-parameter] 
+ Site_name   = MYGI
+ Campaign    = 1209.takuyo_t1
+ Date(UTC)   = 2012-09-03
+ Date(jday)  = 2012-247
+ Ref.Frame   = ITRF2008
+ SoundSpeed  = ./obsdata/MYGI/MYGI.1209.takuyo_t1-svp.csv
+
+[Data-file]
+ datacsv     = ./demo_prep/MYGI/MYGI.1209.takuyo_t1-obs.csv
+ N_shot      =  5481
+ used_shot   =  5458
+
+[Site-parameter]
+ Latitude0   =  38.08333333
+ Longitude0  = 142.91666667
+ Height0     =  30.00
+ Stations    = M12 M13 M14 M15
+# Array_cent :   'cntpos_E'  'cntpos_N'  'cntpos_U'
+ Center_ENU  =    -26.8979    -93.0548  -1669.9999
+
+[Model-parameter]
+# MT_Pos     :   'stapos_E'  'stapos_N'  'stapos_U'   'sigma_E'   'sigma_N'   'sigma_U'   'cov_NU'    'cov_UE'    'cov_EN'
+ M12_dPos    =    788.2180   -199.3822  -1676.6552      0.0155      0.0146      0.0162   6.918e-06  -3.073e-05  -6.759e-06
+ M13_dPos    =    -31.5230   -932.4856  -1675.5333      0.0150      0.0156      0.0164   2.382e-05  -7.869e-07  -1.305e-06
+ M14_dPos    =   -859.9786   -138.4319  -1668.2527      0.0159      0.0147      0.0164   3.069e-06   3.744e-05   2.157e-06
+ M15_dPos    =     -4.3079    898.0805  -1659.5583      0.0147      0.0159      0.0171  -4.940e-05   3.377e-06  -4.160e-06
+ dCentPos    =      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+# ANT_to_TD  :    'forward' 'rightward'  'downward'   'sigma_F'   'sigma_R'   'sigma_D'   'cov_RD'    'cov_DF'    'cov_FR'
+ ATDoffset   =     -1.7542     -0.7352     31.3712      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+
+#Inversion-type 2 Loop  1- 1, RMS(TT) =   0.807830 ms, used_shot = 100.0%, reject =    0, Max(dX) =    10.0000, Hgt =  -1669.922
+#Inversion-type 2 Loop  1- 2, RMS(TT) =   0.114581 ms, used_shot =  99.6%, reject =   21, Max(dX) =     9.7686, Hgt =  -1669.997
+#Inversion-type 2 Loop  1- 3, RMS(TT) =   0.113289 ms, used_shot =  99.6%, reject =   23, Max(dX) =     0.3467, Hgt =  -1670.000
+#Inversion-type 2 Loop  1- 4, RMS(TT) =   0.113264 ms, used_shot =  99.6%, reject =   23, Max(dX) =     0.0342, Hgt =  -1670.000
+#Inversion-type 2 Loop  1- 5, RMS(TT) =   0.113264 ms, used_shot =  99.6%, reject =   23, Max(dX) =     0.0000, Hgt =  -1670.000
+#  ABIC =       46546.111825  misfit =  0.060 
+# lambda_0^2 =   0.10000000
+# lambda_g^2 =   0.01000000
+# mu_t =   0.00000000 sec.
+# mu_MT = 0.5000
