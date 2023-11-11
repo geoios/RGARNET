@@ -1,0 +1,33 @@
+[Obs-parameter]
+ Site_name = Data
+ Campaign = Data.SimulationData23
+ Date(UTC) = 2019-07-13
+ Date(jday) = 2019-194
+ Ref.Frame = ITRF2014
+ SoundSpeed = ./obsdata/Data/Data.SimulationData23-svp.csv
+
+[Data-file]
+ datacsv = ./obsdata/Data/Data.SimulationData23-obs.csv
+ N_shot = 5600
+ used_shot   =  5501
+
+[Site-parameter]
+ Latitude0    = 34.96166667
+ Longitude0   = 139.26333333
+ Height0      = 43.00
+ Stations     =  M01 M02 M03 M04 M05
+# Array_cent :   'cntpos_E'  'cntpos_N'  'cntpos_U'
+ Center_ENU   =      0.0031      0.0054   -700.0560
+
+[Model-parameter]
+# MT_Pos     :   'stapos_E'  'stapos_N'  'stapos_U'   'sigma_E'   'sigma_N'   'sigma_U'   'cov_NU'    'cov_UE'    'cov_EN'
+ M01_dPos    =      0.0023      0.0027   -700.0570      0.0025      0.0024      0.0012  -3.016e-08   1.435e-08  -2.047e-08
+ M02_dPos    =    300.0049    300.0044   -700.0580      0.0024      0.0024      0.0023   1.716e-06   1.897e-06  -1.421e-06
+ M03_dPos    =    300.0013   -299.9927   -700.0497      0.0024      0.0024      0.0023  -1.726e-06   1.853e-06   1.456e-06
+ M04_dPos    =   -299.9940   -299.9943   -700.0537      0.0024      0.0024      0.0023  -1.753e-06  -1.815e-06  -1.452e-06
+ M05_dPos    =   -299.9989    300.0070   -700.0614      0.0024      0.0024      0.0023   1.743e-06  -1.891e-06   1.397e-06
+ dCentPos     = 0.0000      0.0000      0.0000      0.0000      0.0000      0.0000    0.000e+00   0.000e+00   0.000e+00
+# ANT_to_TD  :   'forward'  'rightward'  'downward'   'sigma_F'   'sigma_R'   'sigma_D'   'cov_RD'    'cov_DF'    'cov_FR'
+ ATDoffset    = 1.5547     -1.2690     13.7295      0.0000      0.0000      0.0000    0.000e+00   0.000e+00   0.000e+00
+
+

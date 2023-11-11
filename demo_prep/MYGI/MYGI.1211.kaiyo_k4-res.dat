@@ -1,0 +1,31 @@
+[Obs-parameter] 
+ Site_name   = MYGI
+ Campaign    = 1211.kaiyo_k4
+ Date(UTC)   = 2012-11-14
+ Date(jday)  = 2012-319
+ Ref.Frame   = ITRF2008
+ SoundSpeed  = ./obsdata/MYGI/MYGI.1211.kaiyo_k4-svp.csv
+
+[Data-file]
+ datacsv     = ./obsdata/MYGI/MYGI.1211.kaiyo_k4-obs.csv
+ N_shot      =  4755
+ used_shot   =  4745
+
+[Site-parameter]
+ Latitude0   =  38.08333333
+ Longitude0  = 142.91666667
+ Height0     =  30.00
+ Stations    = M12 M13 M14 M15
+# Array_cent :   'cntpos_E'  'cntpos_N'  'cntpos_U'
+ Center_ENU   =    -26.8945    -93.0635  -1669.9638
+
+[Model-parameter]
+# MT_Pos     :   'stapos_E'  'stapos_N'  'stapos_U'   'sigma_E'   'sigma_N'   'sigma_U'   'cov_NU'    'cov_UE'    'cov_EN'
+ M12_dPos    =    788.2111   -199.3977  -1676.6429      0.0046      0.0043      0.0048   7.246e-07  -3.833e-06  -8.654e-07
+ M13_dPos    =    -31.5075   -932.4927  -1675.4781      0.0044      0.0048      0.0048   3.511e-06   1.292e-08  -8.670e-08
+ M14_dPos    =   -859.9438   -138.4224  -1668.2038      0.0048      0.0044      0.0049   7.339e-07   4.469e-06   5.546e-07
+ M15_dPos    =     -4.3380    898.0587  -1659.5303      0.0044      0.0047      0.0051  -4.367e-06  -1.690e-07  -1.682e-07
+ dCentPos    =      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+# ANT_to_TD  :    'forward' 'rightward'  'downward'   'sigma_F'   'sigma_R'   'sigma_D'   'cov_RD'    'cov_DF'    'cov_FR'
+ ATDoffset   =      1.5547     -1.2690     23.7295      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+

@@ -18,7 +18,7 @@ Variable:
 # ObsEqModel(Observation Equation)
 0.NTD derive observation equation(this paper); 1.Logarithmic observation equation
 
-# JcbMoodel(坐标设计矩阵构建方式)
+# JcbMoodel(Coordinate design matrix construction)
 1.numerical method 2.directional cosine
 
 
