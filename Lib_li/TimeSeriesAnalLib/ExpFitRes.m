@@ -4,16 +4,16 @@ x.t  = t;
 x.t0 = t(1,1);
 P = ones(length(L),1);
 [x1,sigma,L_est,v,P,Qx] = RobLS(A,L,P,Par.RobPar);
-%% 残差拟合  %%%%
+%% Residual fitting  %%%%
 y  = v;
-%%%%%%%%%%% 两步解法 %%%%%%%%%%%%%%%%%%%%
-%%  线性模型残差 --> 非线性指数拟合 %%%
+%%%%%%%%%%% Two-step solution %%%%%%%%%%%%%%%%%%%%
+%%  Linear Model Residuals --> Nonlinear exponential fitting %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% 参数初值  %%%%
+%%% Initial value of the parameter  %%%%
 y = [y;x.constrain];
 P = ones(length(y),1);
 P(end) = P(end)*0.1;
-%%% GaussNewton方法求解非线性观测方程
+%%% The GaussNewton method solves the nonlinear observational equations
 sol = GaussNewton(y,P,x,@ExpFun,Par);
 sol.t = t;
 sol.v = v;

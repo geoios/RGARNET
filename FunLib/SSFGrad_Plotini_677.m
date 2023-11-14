@@ -26,22 +26,19 @@ else
     FigSet.Data{3,2} = [X_tmp, GradRn_tmp];
 end
 FigSet.PlotModel = 'line';FigSet.SubplotModel= 'subplot';FigSet.SubComb = [3,1];
-% 点型
+% Point type
 FigSet.LineType = {'-g','-r','-b','-.r','-.b'};
-% 坐标轴
+% Axis
 FigSet.Label.FontSize = 12;
 FigSet.legendName = {'\fontname{Times new roman}T','';'\fontname{Times new roman}E','\fontname{Times new roman}N';'\fontname{Times new roman}E','\fontname{Times new roman}N'};
-FigSet.xlabelName = {'','','观测历元'};
-FigSet.ylabelName = { '\fontname{Times new roman}{GradT(m/s)}', '\fontname{Times new roman}{ZR(s)}','\fontname{Times new roman}{ZV(s)}'};
+FigSet.xlabelName = {'','','Cumulative Second(s)'};
+FigSet.ylabelName = { '\fontname{Times new roman}{Z_T(s)}', '\fontname{Times new roman}{Z''(s)}','\fontname{Times new roman}{Z(s)}'};
 
 FigSet.Size=[0,0,20,15];                                % Specify the size of the figure
 FigSet.PaperPosition=[0,0,20,10];                       % Specify the size of the figure
 
 FigSet.Frame = 'grid';
 FigSet.StorgePath = SavePath;
-
-
-
 
 end
 

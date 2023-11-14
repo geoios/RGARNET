@@ -1,6 +1,4 @@
 function [ei,t] = RayJac_Num(KnownPoint,UnknownPoint,PF)
-% KnownPoint   待定点
-% UnknownPoint 控制点
 [t,Y,Z,L,theta,Iteration,RayInf] = P2PInvRayTrace(KnownPoint,UnknownPoint,PF);
 LastLayerAngel = asin(RayInf.alfae);
 % LastVelocity   = RayInf.ce;

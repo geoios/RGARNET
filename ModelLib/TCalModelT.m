@@ -4,7 +4,7 @@ for MAXLoop2 = 1:SetModelMP.Inv_parameter.maxloop
     OBSData         =   CalPosJcb_T(OBSData,SetModelMP,INIData,SVP,MP,MPNum);
     [dX,Qxx,sigma0]            =   CalMPJcb_MTJcb_T_ModelT(OBSData,SetModelMP,INIData,SVP,MP,MPNum,knots);
     
-    [dposmax(MAXLoop2),index]  =  max(abs(dX(1:MPNum(1))))
+    [dposmax(MAXLoop2),index]  =  max(abs(dX(1:MPNum(1))));
     switch SetModelMP.Inv_model.GradModel
         case 1
             dxmax = max(abs(dX));

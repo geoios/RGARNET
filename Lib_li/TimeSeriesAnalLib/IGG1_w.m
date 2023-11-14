@@ -1,5 +1,5 @@
 function p = IGG1_w(k1,k2,v)
-%% IGG1权函数
+%% IGG1 Weight functions
 
 V = abs(v);
 if V == 0

@@ -1,0 +1,31 @@
+[Obs-parameter] 
+ Site_name   = MYGI
+ Campaign    = 1703.meiyo_m5
+ Date(UTC)   = 2017-03-10
+ Date(jday)  = 2017-069
+ Ref.Frame   = ITRF2014
+ SoundSpeed  = ./obsdata/MYGI/MYGI.1703.meiyo_m5-svp.csv
+
+[Data-file]
+ datacsv     = ./obsdata/MYGI/MYGI.1703.meiyo_m5-obs.csv
+ N_shot      =  2378
+ used_shot   =  2367
+
+[Site-parameter]
+ Latitude0   =  38.08333333
+ Longitude0  = 142.91666667
+ Height0     =  30.00
+ Stations    = M12 M13 M14 M15
+# Array_cent :   'cntpos_E'  'cntpos_N'  'cntpos_U'
+ Center_ENU   =    -27.2278    -92.9890  -1670.0695
+
+[Model-parameter]
+# MT_Pos     :   'stapos_E'  'stapos_N'  'stapos_U'   'sigma_E'   'sigma_N'   'sigma_U'   'cov_NU'    'cov_UE'    'cov_EN'
+ M12_dPos    =    787.8856   -199.3318  -1676.7119      0.0726      0.0656      0.0579   2.016e-04   5.996e-05  -1.831e-04
+ M13_dPos    =    -31.8395   -932.4459  -1675.5862      0.0682      0.0659      0.0550   4.077e-04   3.521e-04  -6.664e-05
+ M14_dPos    =   -860.3186   -138.3501  -1668.3329      0.0701      0.0622      0.0553   2.287e-04   5.072e-04   1.038e-04
+ M15_dPos    =     -4.6385    898.1717  -1659.6468      0.0703      0.0702      0.0584  -1.747e-04   3.751e-04   1.491e-04
+ dCentPos    =      0.0000      0.0000      0.0000      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+# ANT_to_TD  :    'forward' 'rightward'  'downward'   'sigma_F'   'sigma_R'   'sigma_D'   'cov_RD'    'cov_DF'    'cov_FR'
+ ATDoffset   =      1.9392     -0.7653     21.3339      0.0000      0.0000      0.0000   0.000e+00   0.000e+00   0.000e+00
+

@@ -1,5 +1,5 @@
 function p=IGG3_w(k1,k2,v)
-%% IGG3权函数
+%% IGG3 Weight functions
 V = abs(v);
 if V > k1+0.0000001
       p = 0;

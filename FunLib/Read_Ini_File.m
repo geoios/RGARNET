@@ -1,23 +1,23 @@
 function [value] = Read_Ini_File(FilePath,key)
-%首先判断配置文件是否存在
+%First, determine whether the configuration file exists
 value = [] ;
 if(exist(FilePath,'file') ~= 2)
     return;
 end
-%检查文件中有无key值，如果有则直接读取并返回，否则返回''
+%Check if there is a key value in the file, if there is one, read it directly and return, otherwise return ''
 fid = fopen(FilePath);
 while ~feof(fid)
     tline = fgetl(fid);
     if ~ischar(tline) || isempty(tline)
-        %跳过无效行
+        % Skip invalid lines
         continue;
     end
     tmp=tline;
-    tline(find(isspace(tline))) = []; %删除行中的空格
+    tline(find(isspace(tline))) = []; % Remove spaces in rows
     Index = strfind(tline, [key '=']);
     j=0;
     if ~isempty(Index)
-        %如果找到该配置项，则读取对应的value值
+        % If the corresponding configuration item is found, the corresponding value is read
         ParamName = strsplit(tmp, {'=',' '});
         for i=1:size(ParamName,2)
             Index=strfind(ParamName{i}, key);
@@ -40,7 +40,7 @@ while ~feof(fid)
         end
     end
 end
-fclose(fid); %关闭文件
+fclose(fid);
 end
 
 

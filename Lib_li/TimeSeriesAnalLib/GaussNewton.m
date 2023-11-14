@@ -14,16 +14,16 @@ sig_N = sqrt(Qx(10,10)*sigma^2);
 QX = [Qx(1,1) Qx(10,10)];
 x.sig = [sig_E sig_N];
 x.x0  = x.x0 + Lmd * dx;
-%% 满足正常收敛条件
+%% Normal convergence conditions are met
 if norm(dx) < Stp
     flag = 1;
 end
-%% 超出预期迭代次数
+%% Exceed the expected number of iterations
 Lop = Lop + 1;
 if Lop > Par.Lop
     flag = 1;
 end
-%% 满足指定截断条件
+%% The specified cut-off condition is met
 if Par.StopFun(x.x0)
     flag = 1;
 end

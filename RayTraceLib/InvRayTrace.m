@@ -3,6 +3,3 @@
 %[theta] = IncidentAngle(PF, TT,YY,HH,'Tangent'); 
 [T,Y,Z,L,theta,Iteration,RayInf] = InAngle(PF,TT,YY,HH,PriTheta); 
  end
-
-
-

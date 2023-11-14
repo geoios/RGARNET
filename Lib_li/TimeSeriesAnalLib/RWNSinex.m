@@ -1,17 +1,16 @@
 function RWNSinex(ReadPath,WritePath,para,PostionNameList)
-% 创建文件夹
+% Create folders
 indexList = strfind(WritePath,'\');
 FilePath = WritePath(1:indexList(end));
 if ~exist(FilePath,'dir')
     mkdir (FilePath)
 end
-% 读取制定的配置文件
+% Read the defined configuration file
 FidRead = fopen(ReadPath,'r');FidWrite = fopen(WritePath,'w');
 while ~feof(FidRead)
-    tline = fgetl(FidRead);   % 读取每行数据
-    % 判断字符中是否含有"_dPos"
+    tline = fgetl(FidRead);   % Read each row of data
+    % Determine whether the character contains "_dPos"
     if contains(tline,'_dPos')
-        % 判断是M的第几个
         M_Strindex = strfind(tline,'M');
         MP_index =contains(PostionNameList,tline(M_Strindex:M_Strindex+2)); 
         MP = para(MP_index,:);

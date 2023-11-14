@@ -32,7 +32,7 @@ for i=1:PosNum
         CovXX  = [CovXX,mp(4:6)];
     end
 end
-% 2.确定坐标参数
+% 2.Determine the coordinate parameters
 dCentPos = str2num(INIDataStruct.Model_parameter.MT_Pos.dCentPos);
 dCenPosCovXX = dCentPos(4:6);CovXX = [CovXX,dCenPosCovXX];
 ATD = INIDataStruct.Model_parameter.MT_Pos.ANT_to_TD.ATDoffset;

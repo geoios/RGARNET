@@ -1,6 +1,6 @@
 function [Profi,DelProf] = DelBackward(Profi)
 
-%% 删除声速剖面观测数据内部分异常值
+%% Removed some outliers from the sound velocity profile observations
 DelProf = [];
 while 1
     pf1 = Profi(:,1);
@@ -8,15 +8,15 @@ while 1
     idxp = [];
     for i = 1:length(pf1)-1
         dpf = pf1(i+1) - pf1(i);
-        if dpf == 0             % 下次观测与本次观测深度相同
+        if dpf == 0             % The next observation will be at the same depth as this one
            Profi(i,2) = (Profi(i,2) + Profi(i+1,2))/2;
-           idxp = [idxp i+1];   % 异常值索引
+           idxp = [idxp i+1];   % Outlier index
         end
-        if dpf < 0              % 下次观测比本次观测深度浅
-           idxp = [idxp i+1];   % 异常值索引
+        if dpf < 0              % The next observation is shallower than this one
+           idxp = [idxp i+1];   % Outlier index
         end
     end
     if length(idxp) == 0 ; break;  end
-    DelProf = [DelProf;Profi(idxp,:)]; %异常值存贮
-    Profi(idxp,:) = [];       % 观测数据中异常值删除
+    DelProf = [DelProf;Profi(idxp,:)]; %Outlier storage
+    Profi(idxp,:) = [];       % Outliers are removed from the observed data
 end

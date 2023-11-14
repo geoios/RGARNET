@@ -1,5 +1,5 @@
 function RobPar = RobustControlPar()
-%%% 抗差方案
+%%% Differential resistance scheme
 RobPar.Var         = 'Var';
 RobPar.Var         = 'Med';
 RobPar.Type2       = 'IGG3';

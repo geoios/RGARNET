@@ -7,7 +7,6 @@ for DataNum = 1:FileStruct.FileNum
     INIReadFilePath = FileStruct.SubFileList{3,DataNum};
     %% Output array solution result file
     INIWriteFilePath = [ResPath,'-res.dat'];
-    INIWriteFilePath = strrep(INIWriteFilePath,SetModelMP.FilePath.StnPath,ResComPath);
     MPNum = RESData(DataNum).MPNum;
     MPIndex = CumNum + 1:CumNum + MPNum(1);CumNum = MPNum(end) + CumNum;
     MPIndex2 = CumNum2 + 1:CumNum2 + MPNum(1);CumNum2 = MPNum(1) + CumNum2;
@@ -35,14 +34,13 @@ for DataNum = 1:FileStruct.FileNum
     
     %% Horizontal gradient
     SavePath = [ResPath,'_SSF.png'];
-    [FigSet] = SSFGrad_Plotini_0(RESData(DataNum).OBSData,SavePath);
     switch SetModelMP.Inv_model.ObsEqModel
         case 0
             [OBSData] = OutPutField_0(RESData(DataNum).OBSData);
             if SetModelMP.Inv_model.TModel == 2 && SetModelMP.Inv_model.FloorENModel == 2 && SetModelMP.Inv_model.SurENModel == 0
                 [FigSet] = SSFGrad_Plotini_220(OBSData,SavePath);
             elseif SetModelMP.Inv_model.TModel == 6 && SetModelMP.Inv_model.FloorENModel == 7 && SetModelMP.Inv_model.SurENModel == 7
-                [FigSet] = SSFGrad_Plotini_677(ROBSData,SavePath);
+                [FigSet] = SSFGrad_Plotini_677(OBSData,SavePath);
             end
             
         case 1

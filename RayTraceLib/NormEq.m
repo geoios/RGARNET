@@ -30,7 +30,7 @@ function [N,U,AP] = NormEq(A,L,P)
  % AP = [2 1 6;6 4 -1;-4 -5 18]
 %[N,U,AP] = NormEq(A,L,P)
 if nargin == 2
-   [N,U] = NormEqLS(A,L); % 此处表达式出错，调用函数NormEqLS不能输出AP
+   [N,U] = NormEqLS(A,L); 
    AP = [];
 else
    [N,U,AP] = NormEqWLS(A,L,P);

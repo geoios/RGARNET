@@ -5,7 +5,7 @@ x=0;ray_length=0;
 % PP = sin(theta)/SV_D  
 pp=sin(t_angle)/sv_d; 
 
-if(y_d==y_s) % 如果深度相同
+if(y_d==y_s)
     x=-1.0;
     disp("Warning A in ray_path");
     error('Warning A in ray_path');

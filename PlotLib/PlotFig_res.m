@@ -11,7 +11,12 @@ switch FigSet.SubplotModel
             switch FigSet.PlotModel
                 case 'line'
                     LineType = FigSet.LineType{DataNum};
-                    plot(X,Y,LineType,'lineWidth',FigSet.lineWidth);
+                    h = plot(X,Y,LineType,'lineWidth',FigSet.lineWidth);
+                    if isfield(FigSet,'PointFull')
+                        if FigSet.PointFull(DataNum)
+                            set(h,'MarkerFaceColor',get(h,'color'));
+                        end
+                    end
                 case 'point'
                     PointType = FigSet.PointType{DataNum};
                     plot(X,Y,PointType,'MarkerSize',FigSet.MarkerSize,'MarkerFaceColor',PointType(2));

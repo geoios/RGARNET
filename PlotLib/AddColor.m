@@ -1,5 +1,5 @@
 function map = AddColor(N)
-% N为颜色种类
+% N for the color variety
 
 C = [0	0	0
 0.549019607843137	0.549019607843137	0.549019607843137

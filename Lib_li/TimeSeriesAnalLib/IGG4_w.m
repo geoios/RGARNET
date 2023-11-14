@@ -1,5 +1,5 @@
 function p=IGG4_w(k2,k1,v)
-%% IGG4权函数
+%% IGG4 Weight functions
 v = abs(v);
 if v > k2 || v == k2
   p = 0;

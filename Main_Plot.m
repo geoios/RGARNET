@@ -1,13 +1,13 @@
 clear;clc;close all;FilePath = mfilename('fullpath');cd(fileparts(FilePath)); 
 %% Fig.4 Array-fixed solution and rigid array solution
 clear;clc;close all
-[FigSet] = PlotFig3_Data();
+[FigSet] = PlotFig4_Data();
 [FigSet] = PlotFig_ini(FigSet);
 PlotFig_res(FigSet);
 
 %% Fig.5 Difference between Array-fixed solution and rigid array solution
 clear;clc;close all
-[FigSet] = PlotFig4_Data();
+[FigSet] = PlotFig5_Data();
 E_resi = FigSet.Data{1,1}(:,2);
 N_resi = FigSet.Data{2,1}(:,2);
 U_resi = FigSet.Data{3,1}(:,2);
@@ -25,7 +25,7 @@ print(gcf,'-dpng','-r600',FigSet.StorgePath);
 
 %% Fig.6 Array-free solution compared with the array-fixed solution
 clear;clc;close all
-[FigSet] = PlotFig5_Data();
+[FigSet] = PlotFig6_Data();
 [FigSet] = PlotFig_ini(FigSet);
 PlotFig_res(FigSet);
 
@@ -48,7 +48,7 @@ GNSS_A_Position_Time(SetINIPath)
 
 %% Figure.8  Solutions of GARPOS models and proposed models
 clear;clc;close all
-[FigSet] = PlotFig7_Data();
+[FigSet] = PlotFig8_Data();
 [FigSet] = PlotFig_ini(FigSet);
 PlotFig_res(FigSet);
 
@@ -69,10 +69,12 @@ fEnu = [FigSet.Data{1,4}(:,2) FigSet.Data{2,4}(:,2) FigSet.Data{3,4}(:,2)];
 OutTable4(V,Sig,FigSet.StorgePath);
 %% Figure.9  Difference between the array-free and solution constrained array geometry
 clear;clc;close all
-[FigSet] = PlotFig8_Data();
+[FigSet] = PlotFig9_Data();
 diffE = [FigSet.Data{1,1}(:,2) FigSet.Data{1,2}(:,2)];
 diffN = [FigSet.Data{2,1}(:,2) FigSet.Data{2,2}(:,2)];
 diffU = [FigSet.Data{3,1}(:,2) FigSet.Data{3,2}(:,2)];
 figure
 [statsInfo_garp,statsInfo_prop] = plotHist_sessp(diffE,diffN,diffU);
 print(gcf,'-dpng','-r600',FigSet.StorgePath);
+%% 
+clear;clc;close all

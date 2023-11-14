@@ -1,5 +1,5 @@
 function [FigSet] = PlotFig8_Data()
-%% 读取GARPOS解单历元
+%% GARPOS array-free solution
 prep_res_dir = dir('GARPOS_V.1.0.0_Res/demo_prep/MYGI/*-res.dat');datNum = length(prep_res_dir);
 Epoch_dCentPos = zeros(datNum,3);
 for dirNum = 1:datNum
@@ -13,11 +13,11 @@ Fix_dCentPos = FixData.Site_parameter.Array_cent.Center_ENU;
 EW0 = Epoch_dCentPos(:,1) - Fix_dCentPos(1);
 NS0 = Epoch_dCentPos(:,2) - Fix_dCentPos(2);
 UD0 = Epoch_dCentPos(:,3) - Fix_dCentPos(3);
-%% 读取GARPOS解阵列解
+%% GARPOS array-fixed solution
 ResMYGI = readtable('GARPOS_V.1.0.0_Res/demo_res/res.MYGI.dat');
 EW1 = ResMYGI.EW_m_;NS1 = ResMYGI.NS_m_;UD1 = ResMYGI.UD_m_;
 
-%% 读取单历元
+%% Proposed array-free solution
 prep_res_dir = dir('demo_prep/MYGI/*-res.dat');datNum = length(prep_res_dir);
 Epoch_dCentPos = zeros(datNum,3);
 for dirNum = 1:datNum
@@ -32,39 +32,44 @@ EW2 = Epoch_dCentPos(:,1) - Fix_dCentPos(1);
 NS2 = Epoch_dCentPos(:,2) - Fix_dCentPos(2);
 UD2 = Epoch_dCentPos(:,3) - Fix_dCentPos(3);
 
-%% 读取紧约束
+%% Proposed rigid array solution
 ResMYGI = readtable('demo_timeSeq\res.MYGI.dat');
 EW3 = ResMYGI.EW_m_;NS3 = ResMYGI.NS_m_;UD3 = ResMYGI.UD_m_;
 
-%% 绘制数据
+%% Plot
 FigSet.PlotModel = 'line';FigSet.SubplotModel = 'subplot';FigSet.SubComb  = [3,1];
 DataNum = length(EW0);XL = [1:DataNum]';
-FigSet.Data{1,1} = [XL,(EW1 - EW0)*100];
-FigSet.Data{1,2} = [XL,(EW3 - EW2)*100];
 
-FigSet.Data{2,1} = [XL,(NS1 - NS0) *100];
-FigSet.Data{2,2} = [XL,(NS3 - NS2)*100];
+FigSet.Data{1,1} = [XL,EW0*100];FigSet.Data{1,3} = [XL,EW1*100];
+FigSet.Data{1,2} = [XL,EW2*100];FigSet.Data{1,4} = [XL,EW3*100];
 
-FigSet.Data{3,1} = [XL,(UD1 - UD0) *100];
-FigSet.Data{3,2} = [XL,(UD3 - UD2) *100];
+FigSet.Data{2,1} = [XL,NS0*100];FigSet.Data{2,3} = [XL,NS1*100];
+FigSet.Data{2,2} = [XL,NS2*100];FigSet.Data{2,4} = [XL,NS3*100];
+
+FigSet.Data{3,1} = [XL,UD0*100];FigSet.Data{3,3} = [XL,UD1*100];
+FigSet.Data{3,2} = [XL,UD2*100];FigSet.Data{3,4} = [XL,UD3*100];
 
 
-FigSet.LineType = {'-oc','-or','-oc','-or','-oc','-or'};
-FigSet.PointFull = [1,1,1,1,1,1];
-FigSet.legendCol = 1;
-% 坐标轴
+
+FigSet.LineType = {'oc','or','-^b','-^m',...
+                   'oc','or','-^b','-^m',...
+                   'oc','or','-^b','-^m'};
+               
+FigSet.PointFull = [0,0,1,1,0,0,1,1,0,0,1,1];
+FigSet.PointSize = [8,8,4,4,8,8,4,4,8,8,4,4];
+FigSet.legendCol = 2;
+% axis
 FigSet.xlabelName = {'','','\fontname{Times new roman}{Epochs}'};
 FigSet.ylabelName = {'\fontname{Times new roman}{E(cm)}','\fontname{Times new roman}{N(cm)}','\fontname{Times new roman}{U(cm)}'};
 FigSet.Label.FontSize = 18;
-
 FigSet.legendType = 'Outside_Top';
-FigSet.legendName = {'\fontname{Times new roman}{GARPOS array-free solution and array-fixed solution difference}',...
-    '\fontname{Times new roman}{Proposed array-free solution and tight constraint resilient array solution difference}'};
-FigSet.legendPos = [0.15 0.94 0.7 0.05];
+FigSet.legendName = {'\fontname{Times new roman}{GARPOS array-free solution}','\fontname{Times new roman}{Proposed array-free solution}',...
+    '\fontname{Times new roman}{GARPOS array-fixed solution}','\fontname{Times new roman}{Proposed rigid array solution}'};
+FigSet.legendPos = [0.17 0.94 0.7 0.05];
 
 PosNameList = {'1209','1211','1212','1302','1306','1309','1311','1401',...
     '1408','1501','1504','1508','1510','1602','1605','1607','1610','1703',...
-    '1704','1708','1801','1802','1808','1903','1906','1910','2002','2006'}; % 后续更改自适应
+    '1704','1708','1801','1802','1808','1903','1906','1910','2002','2006'};
 FigSet.Xticks.LableNum = {1:DataNum;1:DataNum;1:DataNum};
 LableStr = {PosNameList{1:DataNum}};
 FigSet.Xticks.LableStr = {LableStr;LableStr;LableStr};
@@ -72,9 +77,8 @@ FigSet.Xticks.LableStr = {LableStr;LableStr;LableStr};
 FigSet.global.FontSize = 18;
 FigSet.global.Fontname = 'Times new roman';
 FigSet.global.linewidth = 1;
-FigSet.Size=[0,0,20,15];                                % 指定figure的尺寸
-FigSet.PaperPosition=[0,0,20,10];                       % 设定图窗大小和位置
-FigSet.StorgePath = 'FigRes\Figure_8_Difference_between_the_array-free_and.png';
-
+FigSet.Size=[0,0,20,20];
+FigSet.PaperPosition=[0,0,20,10];
+FigSet.StorgePath = 'FigRes\Figure_8_Solution_of_GARPOS_models_and_proposed_models.png';
 end
 

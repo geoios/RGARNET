@@ -1,3 +1,5 @@
 !*
 *.mat
+*.png
 !FigRes/*
+!Example/Figure_10_11_Table_5/*.png

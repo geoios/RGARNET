@@ -1,14 +1,14 @@
 function [Control,Par] = RayTracing_ControlSystem() 
-%% 解算控制
-% 入射角：拟合 ———> 推估
+%% Solve control
+% Angle of incidence: Fitted ———> estimated
 Control.InDirect = '';
 Control.InDirect.Interpolation = '';
-% 割线法求解初始入射角
+% The secant method solves for the initial angle of incidence
 Control.InDirect.Tangent = '';
 Control.InDirect.HeightAngle = '';
 
-%% 参数控制
-% 计算入射角方法参数配置
+%% Parameter control
+% Calculate the angle of incidence method parameter configuration
 Par.InAngle.WindowNum = 7;
 Par.InAngle.Order     = 5;
 Par.InAngle.TermIter  = 20;

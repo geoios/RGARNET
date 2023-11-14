@@ -1,7 +1,7 @@
 function plotHist(DataArray)
-%% 函数说明
-%功能：画直方图
-%% 功能代码
+%% Function description
+%Function: Draw a histogram
+%% Functional codes
 [y,x] = hist(DataArray,10);
 h = bar(x,y,0.8,'EdgeColor',[255/255 255/255 255/255]);hold on;
 ylabel('Frequency')

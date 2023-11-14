@@ -1,5 +1,5 @@
 function p=IGG8_w(k1,k2,v,c)
-%% IGG8权函数,新提出
+%% IGG8 Weight functions
 V = abs(v);
 if V > k1
    p = 0;

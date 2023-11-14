@@ -1,7 +1,7 @@
 function [FigSet] = Table4_Data()
 
 
-%% 读取单历元
+%% The proposed array-free solution
 prep_res_dir = dir('demo_prep/MYGI/*-res.dat');datNum = length(prep_res_dir);
 Epoch_dCentPos = zeros(datNum,3);
 for dirNum = 1:datNum
@@ -16,7 +16,7 @@ EW0 = Epoch_dCentPos(:,1) - Fix_dCentPos(1);
 NS0 = Epoch_dCentPos(:,2) - Fix_dCentPos(2);
 UD0 = Epoch_dCentPos(:,3) - Fix_dCentPos(3);
 
-%% 读取GARPOS解单历元
+%% GARPOS array-free solution
 prep_res_dir = dir('GARPOS_V.1.0.0_Res/demo_prep/MYGI/*-res.dat');datNum = length(prep_res_dir);
 Epoch_dCentPos = zeros(datNum,3);
 for dirNum = 1:datNum
@@ -31,17 +31,17 @@ EW1 = Epoch_dCentPos(:,1) - Fix_dCentPos(1);
 NS1 = Epoch_dCentPos(:,2) - Fix_dCentPos(2);
 UD1 = Epoch_dCentPos(:,3) - Fix_dCentPos(3);
 
-%% 读取紧约束
+%% The proposed rigid array solution
 ResMYGI = readtable('demo_timeSeq\res.MYGI.dat');
 EW2 = ResMYGI.EW_m_;NS2 = ResMYGI.NS_m_;UD2 = ResMYGI.UD_m_;
 
-%% 读取GARPOS解阵列解
+%% GARPOS array-fixed slotio
 ResMYGI = readtable('GARPOS_V.1.0.0_Res/demo_res/res.MYGI.dat');
 EW3 = ResMYGI.EW_m_;NS3 = ResMYGI.NS_m_;UD3 = ResMYGI.UD_m_;
 
 
 
-%% 绘制数据
+%% Plot
 FigSet.PlotModel = 'line';FigSet.SubplotModel = 'subplot';FigSet.SubComb  = [3,1];
 DataNum = length(EW0);XL = [1:DataNum]';
 

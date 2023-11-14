@@ -1,8 +1,7 @@
 function [statsInfo_garp,statsInfo_prop] = plotHist_sessp(diffE,diffN,diffU)
-%% 函数说明
-%功能：绘自构声速剖面精度直方图及输出精度
-%% 功能代码
-%绘E误差直方图
+
+%% Functional codes
+% Draw a histogram of E errors
 subplot(1,3,1)
 [StatsInfoE1,yE1,xE1] = plotHist_subsSessp(diffE(:,1));
 [StatsInfoE2,yE2,xE2] = plotHist_subsSessp(diffE(:,2));
@@ -13,7 +12,7 @@ set(b,'edgecolor','none');
 xlabel([{''};{'E'}]);
 ylabel('Frequency')
 set(gca,'FontSize',18,'Fontname','Times new roman','FontWeight','bold','linewidth',0.75,'tickdir','in');box on;
-%绘N误差直方图
+% Draw a histogram of N errors
 subplot(1,3,2)
 [StatsInfoN1,yN1,xN1] = plotHist_subsSessp(diffN(:,1));
 [StatsInfoN2,yN2,xN2] = plotHist_subsSessp(diffN(:,2));
@@ -25,7 +24,7 @@ pos = axis;
 xlabel([{'Difference (cm)'};{'N'}])
 set(gca,'FontSize',18,'Fontname','Times new roman','FontWeight','bold','linewidth',0.75,'tickdir','in');box on;
 legend('Difference between the GARPOS solutions','Difference between the proposed solutions','box','on','position',[0.47 0.92 0.1 0.1],'Orientation','horizon','FontSize',10)
-%绘500~1727.80误差直方图
+% Draw a histogram of 500~1727.80 error
 subplot(1,3,3)
 [StatsInfoU1,yU1,xU1] = plotHist_subsSessp(diffU(:,1));hold on;
 [StatsInfoU2,yU2,xU2] = plotHist_subsSessp(diffU(:,2));hold on;

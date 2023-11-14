@@ -1,28 +1,26 @@
-% 读取配置文件并返回全局变量（GlobalPar）
 %% ReadSeafloorNetSolution-->Seafloor network Solution exchange format
-
 function GlobalPar = ReadNSinex(ConfigFile) 
 
-% 读取制定的配置文件
+% Read the defined configuration file
 fid = fopen(ConfigFile);
 
 StorageName = 'Struct';
 
 
 while ~feof(fid)
-    tline = fgetl(fid);   % 读取每行数据 
+    tline = fgetl(fid); 
     if strfind(tline,'[')
         ModelName = StandareStr(tline);
         TempName = ModelName;
         
         while 1
-            tline = fgetl(fid);   % 读取每行数据
-            % 行内容为空时跳出模块读取
+            tline = fgetl(fid); 
+            % When the line content is empty, it is read out of the module
             if isempty(tline)     
                 break
             end
             StrInf = split(tline,' = ');
-            % 行内容为':'时重新进行分割
+            % If the line content is ':', the split is re-divided
             if length(StrInf) == 1     
                 StrInf  = split(tline,':');
                 VarName = StrInf{1};
@@ -36,7 +34,7 @@ while ~feof(fid)
             VarName = StandareStr(VarName);
             VarInf  = StrInf{2};
 %             VarInf  = strrep(VarInf,'-',' -');
-            %% 日期中存在 -，因此，需要特殊处理
+            %% There is a '-' in the date, therefore, special handling is required
             IsMinus = strfind(VarInf,' -');
             %%
             [StrPer,NumPer] = StrAnalisy(VarInf);
@@ -52,11 +50,4 @@ while ~feof(fid)
 end
 eval(['GlobalPar' ,'=' , StorageName ';']);
 fclose(fid);
-
-
-
-
-
-
-
-
+end

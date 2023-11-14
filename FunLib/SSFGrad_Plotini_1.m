@@ -12,7 +12,7 @@ FigSet.PlotModel = 'line';FigSet.SubplotModel= 'subplot';FigSet.SubComb = [3,1];
 FigSet.LineType = {'-g','-r','-b','-.r','-.b'};
 FigSet.Label.FontSize = 12;
 FigSet.legendName = {'\fontname{Times new roman}T','';'\fontname{Times new roman}E','\fontname{Times new roman}N';'\fontname{Times new roman}E','\fontname{Times new roman}N'};
-FigSet.xlabelName = {'','','Epoch'};
+FigSet.xlabelName = {'','','Cumulative Second(s)'};
 FigSet.ylabelName = { '\fontname{Times new roman}{dV0(m/s)}', '\fontname{Times new roman}{g1(m/s/km)}','\fontname{Times new roman}{g2(m/s/km)}'};
 
 FigSet.Size=[0,0,20,15];    

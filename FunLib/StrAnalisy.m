@@ -1,6 +1,6 @@
 function [StrPercentage,NumPercentage] = StrAnalisy(Str)
-Str = strrep(Str,' ','');  % È¥³ý×Ö·û´®µÄ¿Õ¸ñ
-StrNum = length(Str);      % ×Ö·û´®³¤¶È
+Str = strrep(Str,' ','');  % Remove spaces from strings
+StrNum = length(Str);      % String length
 NumChar   = '0123456789.e-+ ';
 
 Nums = 0;

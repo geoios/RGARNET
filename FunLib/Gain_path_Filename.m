@@ -8,5 +8,3 @@ for i=3:folder_num
     Tag{i-2,1}=files(i,1).name(index:end);
 end
 end
-
-% fullfile 函数作用是作用是利用文件各部分信息创建并合并成完整文件名

@@ -1,16 +1,16 @@
 function PF = PFGrad(PF,w,ord)
 [m,n] = size(PF);
-cp = ceil(w/2);  % ceil() 超无穷大方向四舍五入
+cp = ceil(w/2);
 k = 1;
 for i=1:m-w+1
     PFWin = PF(i:i+w-1,:);
-    if i == 1       % 如果在第一层
+    if i == 1       % If on the first layer
        for s = 1:cp
            x = Grad1(PFWin,s,ord);
            a(k,:) = x;
            k = k +1;
        end
-    elseif i == m-w+1  % 如果在最后一层
+    elseif i == m-w+1  % If on the last layer
         for s=1:w-cp+1
             x = Grad1(PFWin,cp+s-1,ord); %% for i = m-w+cp;i-m+w=cp;
             a(k,:) = x;

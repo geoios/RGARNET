@@ -1,20 +1,17 @@
-% 读取配置文件并返回全局变量（GlobalPar）
 %% ReadSeafloorNetSolution-->Seafloor network Solution exchange format
 function GlobalPar = ReadNSinex(StandardFile) 
 
-% 读取制定的配置文件
 fid = fopen(StandardFile);
 GlobalPar.FileName = StandardFile;
 StorageName = 'GlobalPar.';
 DataFlag =  0;
 while ~feof(fid)
-    tline = fgetl(fid);   % 读取每行数据 
+    tline = fgetl(fid);  
     if strfind(tline,'[')
         ModelName = StandareStr(tline);
         ModelName = [StorageName ModelName,'.'];
         while 1
-            tline = fgetl(fid);   % 读取每行数据
-            % 行内容为空时跳出模块读取
+            tline = fgetl(fid); 
             if isempty(tline)     
                 break
             end
@@ -23,23 +20,18 @@ while ~feof(fid)
             else
                 StrInf = split(tline,' = ');
             end
-            % 行内容为':'时重新进行分割
             if length(StrInf) == 1     
                 StrInf  = split(tline,' : ');
                 VarName = StrInf{1};
                 VarName = StandareStr(VarName);
-                  if  StrInf{1}(1)  == '$'  % $ : Data      %% 枝干
-                                            % # : Struct 
+                  if  StrInf{1}(1)  == '$'                 
                       DataFlag = 1;
-                      Jumps = 1;            % 准备跳行
+                      Jumps = 1;
                       Data = [];
                       DataFieldStr = [ModelName StandareStr( StrInf{1}(3:end) ) ' = Data;'];
-                  elseif StrInf{1}(1)  == '#'  %% 枝干
+                  elseif StrInf{1}(1)  == '#' 
                       DataFlag = 2;
                       StructFieldStr = [ModelName StandareStr( StrInf{1}(3:end) )];
-%                   else
-%                       DataFlag = 3;  %% 叶子
-%                       StructFieldStr = [StructFieldStr '.' StandareStr( StrInf{1}(2:end) )];
                   end
                 if DataFlag == 2
                   tline = fgetl(fid);
@@ -65,16 +57,16 @@ while ~feof(fid)
                 VarName = StandareStr(VarName);
                 VarInf  = StrInf{2};
     %             VarInf  = strrep(VarInf,'-',' -');
-                %% 日期中存在 -，因此，需要特殊处理
+                %% - is present in the date and, therefore, requires special handling
                 IsMinus = strfind(VarInf,' -');
                 %%
                 [StrPer,NumPer] = StrAnalisy(VarInf);
                 if NumPer == 1  & IsMinus    %
                     VarInf = str2num(VarInf);
                 end
-                if DataFlag == 2  %% # 下结构体数据
+                if DataFlag == 2  
                     eval([StructFieldStr '.' VarName  '= VarInf;']);
-                else              %% [ 下的直接数据
+                else 
                     eval([StructFieldStr  '= VarInf;']);
                 end
             end

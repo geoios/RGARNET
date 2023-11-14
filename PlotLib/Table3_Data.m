@@ -1,5 +1,5 @@
 function [FigSet] = Table3_Data()
-%% 读取单历元
+%% The proposed array-free solution
 prep_res_dir = dir('demo_prep/MYGI/*-res.dat');datNum = length(prep_res_dir);
 Epoch_dCentPos = zeros(datNum,3);
 for dirNum = 1:datNum
@@ -15,11 +15,11 @@ NS0 = Epoch_dCentPos(:,2) - Fix_dCentPos(2);
 UD0 = Epoch_dCentPos(:,3) - Fix_dCentPos(3);
 
 
-%% 读取阵列解算
+%% The proposed array-fixed solution
 ResMYGI = readtable('demo_res\res.MYGI.dat');
 EW1 = ResMYGI.EW_m_;NS1 = ResMYGI.NS_m_;UD1 = ResMYGI.UD_m_;
 
-%% 读取紧约束
+%% The proposed rigid array solution
 ResMYGI = readtable('demo_timeSeq\res.MYGI.dat');
 EW2 = ResMYGI.EW_m_;NS2 = ResMYGI.NS_m_;UD2 = ResMYGI.UD_m_;
 

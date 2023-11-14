@@ -30,7 +30,7 @@ else
     load('FigRes\TimeList.mat','TimeList');
 end
 %% Plot the computational efficiency curve
-[FigSet] = PlotFig6_Data(TimeList);
+[FigSet] = PlotFig7_Data(TimeList);
 [FigSet] = PlotFig_ini(FigSet);
 PlotFig_res(FigSet);
 end
