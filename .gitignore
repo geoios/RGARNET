@@ -1,5 +1,7 @@
 !*
 *.mat
-*.png
+demo_prep/*.png
+demo_res/*.png
+demo_timeSeq/*.png
 !FigRes/*
 !Example/Figure_10_11_Table_5/*.png

@@ -55,13 +55,10 @@ GNSS_A_Position_Cal(SetINIPath,'TimeSqe_0_0005');
 SetINIPath = '.\Settings-prep_TimeSqe_0_0001.ini';
 GNSS_A_Position_Cal(SetINIPath,'TimeSqe_0_0001');
 
-%% Resilient array solution mu_0^2 = 0.00005
-SetINIPath = '.\Settings-prep_TimeSqe_0_00005.ini';
-GNSS_A_Position_Cal(SetINIPath,'TimeSqe_0_00005');
 
 %% OutPut Table 5
 clear;clc;close all
-[FigSet] = Table5_Data('TimeSqe_0_00005','TimeSqe_0_0001','TimeSqe_0_0005','TimeSqe_0_001','TimeSqe_0_005','TimeSqe_0_01','TimeSqe_0_05','TimeSqe_0_1','TimeSqe_0_5','TimeSqe_1','TimeSqe_100');
+[FigSet] = Table5_Data('TimeSqe_0_0001','TimeSqe_0_0005','TimeSqe_0_001','TimeSqe_0_005','TimeSqe_0_01','TimeSqe_0_05','TimeSqe_0_1','TimeSqe_0_5','TimeSqe_1','TimeSqe_100');
 ObsPath = 'obsdata\MYGI';
 ConPath = 'initcfg\MYGI';
 cEnu = [FigSet.Data{1,1}(:,2) FigSet.Data{2,1}(:,2) FigSet.Data{3,1}(:,2)];
@@ -74,7 +71,6 @@ iEnu = [FigSet.Data{1,7}(:,2) FigSet.Data{2,7}(:,2) FigSet.Data{3,7}(:,2)];
 jEnu = [FigSet.Data{1,8}(:,2) FigSet.Data{2,8}(:,2) FigSet.Data{3,8}(:,2)];
 kEnu = [FigSet.Data{1,9}(:,2) FigSet.Data{2,9}(:,2) FigSet.Data{3,9}(:,2)];
 lEnu = [FigSet.Data{1,10}(:,2) FigSet.Data{2,10}(:,2) FigSet.Data{3,10}(:,2)];
-mEnu = [FigSet.Data{1,11}(:,2) FigSet.Data{2,11}(:,2) FigSet.Data{3,11}(:,2)];
 [V(1,:),Sig(1,:)] = TimeSeriesAnalysis(cEnu,ObsPath,ConPath);
 [V(2,:),Sig(2,:)] = TimeSeriesAnalysis(dEnu,ObsPath,ConPath);
 [V(3,:),Sig(3,:)] = TimeSeriesAnalysis(eEnu,ObsPath,ConPath);
@@ -85,21 +81,15 @@ mEnu = [FigSet.Data{1,11}(:,2) FigSet.Data{2,11}(:,2) FigSet.Data{3,11}(:,2)];
 [V(8,:),Sig(8,:)] = TimeSeriesAnalysis(jEnu,ObsPath,ConPath);
 [V(9,:),Sig(9,:)] = TimeSeriesAnalysis(kEnu,ObsPath,ConPath);
 [V(10,:),Sig(10,:)] = TimeSeriesAnalysis(lEnu,ObsPath,ConPath);
-[V(11,:),Sig(11,:)] = TimeSeriesAnalysis(mEnu,ObsPath,ConPath);
 OutTable5(V,Sig,FigSet.StorgePath);
 
-%% 
-clc;clear;close all
-[FigSet] = Curver();
+%% Figure 12 Logarithm curve of root sum squares of the residual STDs about lg(/mu_0)
+clc;close all
+X = [0.0001;0.0005;0.001;0.005;0.01;0.05;0.1;0.5;1;100];
+Table5 = readtable(FigSet.StorgePath);
+Y = Table5.Root_Sum_Squares;
+
+[FigSet] = PlotFig12_Data(X,Y);
 [FigSet] = PlotFig_ini(FigSet);
 PlotFig_res(FigSet);
-figure(1)
-
-[FigSet] = Curver2();
-[FigSet] = PlotFig_ini(FigSet);
-PlotFig_res(FigSet);
-figure(2)
-
-
-
 

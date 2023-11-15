@@ -13,13 +13,13 @@ N_resi = FigSet.Data{2,1}(:,2);
 U_resi = FigSet.Data{3,1}(:,2);
 subplot(1,3,1);
 plotHist(E_resi);
-xlabel([{''};{'E'}]);
+xlabel('\fontname{Times new roman}{E(cm)}');
 subplot(1,3,2);
 plotHist(N_resi);
-xlabel([{'difference (cm)'};{'N'}]);ylabel('');
+xlabel('\fontname{Times new roman}{N(cm)}');ylabel('');
 subplot(1,3,3);
 plotHist(U_resi);
-xlabel([{''};{'U'}]);ylabel('');
+xlabel('\fontname{Times new roman}{U(cm)}');ylabel('');
 set(gcf,'Units','centimeter','Position',[5 5 25 10])
 print(gcf,'-dpng','-r600',FigSet.StorgePath);
 

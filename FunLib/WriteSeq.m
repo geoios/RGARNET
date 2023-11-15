@@ -58,7 +58,7 @@ for i = 1:IteMaxLoop
     nrms = sqrt(sum(oc(:,2).^2)/length(oc(:,2)));
     urms = sqrt(sum(oc(:,3).^2)/length(oc(:,3)));
     
-    rmcri = 5;
+    rmcri = 4;
     rl = length(DeletList);
     AllNum = 1;LocalNum = 1;
     DelList=[];
