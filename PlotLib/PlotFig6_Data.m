@@ -14,8 +14,8 @@ EW0 = Epoch_dCentPos(:,1) - Fix_dCentPos(1);
 NS0 = Epoch_dCentPos(:,2) - Fix_dCentPos(2);
 UD0 = Epoch_dCentPos(:,3) - Fix_dCentPos(3);
 
-%% Proposed array-fixed solution
-ResMYGI = readtable('demo_res\res.MYGI.dat');
+%% Rigid array solution
+ResMYGI = readtable('demo_timeSeq\res.MYGI.dat');
 EW1 = ResMYGI.EW_m_;NS1 = ResMYGI.NS_m_;UD1 = ResMYGI.UD_m_;
 
 %% Plot 
@@ -41,7 +41,7 @@ FigSet.ylabelName = {'\fontname{Times new roman}{E(cm)}','\fontname{Times new ro
 FigSet.Label.FontSize = 18;
 
 FigSet.legendType = 'Outside_Top';
-FigSet.legendName = {'\fontname{Times new roman}{Proposed array-free solution}','\fontname{Times new roman}{Proposed array-fixed solution}'};
+FigSet.legendName = {'\fontname{Times new roman}{Array-free solution}','\fontname{Times new roman}{Rigid array solution}'};
 FigSet.legendPos = [0.17 0.94 0.7 0.05];
 FigSet.legendCol = 2;
 
@@ -57,7 +57,7 @@ FigSet.global.Fontname = 'Times new roman';
 FigSet.global.linewidth = 1;
 FigSet.Size=[0,0,20,15]; 
 FigSet.PaperPosition=[0,0,20,10];
-FigSet.StorgePath = 'FigRes\Figure_5_Array-free_solution_compared_with_Array_fixed_solution.png';
+FigSet.StorgePath = 'FigRes\Figure_6_Array-free_solution_compared_with_rigid_array_solution.png';
 
 end
 
