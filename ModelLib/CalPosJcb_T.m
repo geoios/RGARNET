@@ -5,7 +5,7 @@ PF = PFGrad(SVP,2,1);
 switch SetModelMP.Inv_model.DirOffset
     case 0
         [EachPos,dCenPos] = deal(MP(1:MPNum(1)-3),MP(MPNum(1)-2:MPNum(1)));
-        EachPos = EachPos + repmat(dCenPos,1,MPNum(1)/3-1);
+        EachPos = EachPos + repmat(dCenPos,1,length(EachPos)/3);
     case 1
         EachPos = MP(1:MPNum(1));
 end

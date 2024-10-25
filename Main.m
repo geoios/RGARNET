@@ -5,7 +5,7 @@ GNSS_A_Position_Cal(SetINIPath,'.');
 
 %% Determine Seafloor Array 
 GNSS_A_Position_Fix('MYGI');
-
+  
 %% Seafloor Array Offset Solving
 SetINIPath = '.\Settings-prep_Fix.ini';
 GNSS_A_Position_Cal(SetINIPath,'.');
@@ -13,3 +13,8 @@ GNSS_A_Position_Cal(SetINIPath,'.');
 %% Seafloor Array Baseline Constraint Solving
 SetINIPath = '.\Settings-prep_TimeSqe.ini';
 GNSS_A_Position_Cal(SetINIPath,'.');
+
+%% Seafloor Array Earth_adhered
+SetINIPath = '.\Settings-prep_Earth_adhered.ini';
+GNSS_A_Position_Cal(SetINIPath,'TimeSqe_Earth_adhered');
+

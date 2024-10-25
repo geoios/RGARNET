@@ -23,14 +23,31 @@ if ~exist('FigRes\TimeList.mat','file')
             % 3.Solve
             [ModelT_MP_T,RESData,Qxx] = FixTCalModelT(RESData,SetModelMP);
             TimeList(TimeIndex-1,ModelIndex) = toc(t);
+            save(['FigRes\TimeListRes\AdjGuiModel_',num2str(SetModelMP.Inv_model.AdjGuiModel),'_CumsumStaNum_',num2str(TimeIndex),'.mat']);
         end
     end
     save('FigRes\TimeList.mat',"TimeList");
 else
+    deltaX = zeros(28-2,1);
+    for TimeIndex = 2:28
+        MPPos = [];
+        for ModelIndx = 1:3:4
+            load(['FigRes\TimeListRes\AdjGuiModel_',num2str(ModelIndx),'_CumsumStaNum_',num2str(TimeIndex),'.mat'])
+            % Gain Position
+            Num_tmp = 0;MPNumPosList = [];
+            for Index = 1:TimeIndex
+                MPNum = RESData(Index).MPNum;
+                MPNumPosList = [MPNumPosList,Num_tmp + 1:Num_tmp + MPNum(1)];
+                Num_tmp = Num_tmp + MPNum(end);
+            end
+            MPPos = [MPPos;ModelT_MP_T(MPNumPosList)];
+        end
+        deltaX(TimeIndex - 1) = norm(MPPos(1,:) - MPPos(2,:));
+    end
     load('FigRes\TimeList.mat','TimeList');
 end
 %% Plot the computational efficiency curve
-[FigSet] = PlotFig7_Data(TimeList);
+[FigSet] = PlotFig7_Data(TimeList,deltaX);
 [FigSet] = PlotFig_ini(FigSet);
 PlotFig_res(FigSet);
 end

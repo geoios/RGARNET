@@ -1,7 +1,7 @@
 function [a,f0] = Grad1(S,pc,ord)
-%% ProfileGrad(PF)->Produce sound gradient 产生声音梯度
-%%For generalized IDW method 广义IDW(空间插值)方法
- %+pc, central point index; pc 中心点插值；
+%% ProfileGrad(PF)->Produce sound gradient 
+%%For generalized IDW method 
+ %+pc, central point index; 
  %+S = [+ + + pc + + +];
  %+ord, order 秩序
 [n,m] = size(S);

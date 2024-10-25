@@ -3,7 +3,7 @@ N_shot = INIData.Data_file.N_shot;
 Jcb = zeros(N_shot,MPNum(end));
 C = MeanVel(SVP);spdeg = 3;
 [EachPos,dCenPos] = deal(MP(1:MPNum(1)-3),MP(MPNum(1)-2:MPNum(1)));
-EachPos = EachPos + repmat(dCenPos,1,MPNum(1)/3-1);
+EachPos = EachPos + repmat(dCenPos,1,length(EachPos)/3);
 BaseA_ST = INIData.BaseA_ST;
 BaseA_RT = INIData.BaseA_RT;
 %% Coordinate Jacobian matrix

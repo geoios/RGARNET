@@ -23,6 +23,12 @@ for MAXLoop2 = 1:SetModelMP.Inv_parameter.maxloop
                 iconv = 0;
             end
         case 2
+            dxmax = max(abs(dX))
+            if dxmax > 10
+                alpha = 10/ dxmax;
+                dX = alpha * dX;
+                dxmax = max(abs(dX));
+            end
             MP              =	MP  + dX';
             if dposmax(MAXLoop2)<5*10^-4
                 break;

@@ -37,37 +37,37 @@ else
     TimSqeList = zeros(1,6);
 end
 %% Sea surface trajectory
-TrackPath = [ResPath,'_Track.png'];
-MPPos = reshape(ModelT_MP_T(1:MPNum(1)),3,MPNum(1)/3)';
-[FigSet] = SeaTrack_Plotini(OBSData,MPPos(:,1:2),TrackPath);
-[FigSet] = PlotFig_ini(FigSet);
-PlotFig_res(FigSet);
+% TrackPath = [ResPath,'_Track.png'];
+% MPPos = reshape(ModelT_MP_T(1:MPNum(1)),3,MPNum(1)/3)';
+% [FigSet] = SeaTrack_Plotini(OBSData,MPPos(:,1:2),TrackPath);
+% [FigSet] = PlotFig_ini(FigSet);
+% PlotFig_res(FigSet);
 
 %% Horizontal gradient
-SSFPath = [ResPath,'_SSF.png'];
-switch SetModelMP.Inv_model.ObsEqModel
-    case 0
-        [OBSData] = OutPutField_0(OBSData);
-        if SetModelMP.Inv_model.TModel == 2 && SetModelMP.Inv_model.FloorENModel == 2 && SetModelMP.Inv_model.SurENModel == 0
-            [FigSet] = SSFGrad_Plotini_220(OBSData,SSFPath);
-        elseif SetModelMP.Inv_model.TModel == 6 && SetModelMP.Inv_model.FloorENModel == 7 && SetModelMP.Inv_model.SurENModel == 7
-            [FigSet] = SSFGrad_Plotini_677(OBSData,SSFPath);
-        end
-        
-    case 1
-        [OBSData] = OutPutField_1(OBSData);
-        [FigSet] = SSFGrad_Plotini_1(OBSData,SSFPath);
-        
-end
-[FigSet] = PlotFig_ini(FigSet);
-PlotFig_res(FigSet);
+% SSFPath = [ResPath,'_SSF.png'];
+% switch SetModelMP.Inv_model.ObsEqModel
+%     case 0
+%         [OBSData] = OutPutField_0(OBSData);
+%         if SetModelMP.Inv_model.TModel == 2 && SetModelMP.Inv_model.FloorENModel == 2 && SetModelMP.Inv_model.SurENModel == 0
+%             [FigSet] = SSFGrad_Plotini_220(OBSData,SSFPath);
+%         elseif SetModelMP.Inv_model.TModel == 6 && SetModelMP.Inv_model.FloorENModel == 7 && SetModelMP.Inv_model.SurENModel == 7
+%             [FigSet] = SSFGrad_Plotini_677(OBSData,SSFPath);
+%         end
+% 
+%     case 1
+%         [OBSData] = OutPutField_1(OBSData);
+%         [FigSet] = SSFGrad_Plotini_1(OBSData,SSFPath);
+% 
+% end
+% [FigSet] = PlotFig_ini(FigSet);
+% PlotFig_res(FigSet);
 
 
 %% Output time residual
-ResiTTPath = [ResPath,'_ResiTT.png'];
-[FigSet] = dT_Plotini(OBSData,ResiTTPath);
-[FigSet] = PlotFig_ini(FigSet);
-PlotFig_res(FigSet);
+% ResiTTPath = [ResPath,'_ResiTT.png'];
+% [FigSet] = dT_Plotini(OBSData,ResiTTPath);
+% [FigSet] = PlotFig_ini(FigSet);
+% PlotFig_res(FigSet);
 
 %% Output result file (structure to table)
 ObsWriteFilePath = strrep(INIWriteFilePath,'-res.dat','-obs.csv');
@@ -76,7 +76,7 @@ cfgfileName = [INIData.FixSave,'/',INIData.Obs_parameter.Site_name,'/',ResDatNam
 struct2csv(OBSData,ObsWriteFilePath,cfgfileName);
 
 %% Output".mat" result file
-MatPath = [ResPath,'_Res.mat'];
-save(MatPath)
+% MatPath = [ResPath,'_Res.mat'];
+% save(MatPath)
 end
 

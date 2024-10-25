@@ -1,9 +1,9 @@
 function PlotFig_res(FigSet)
-[DataLine,DataRow]= size(FigSet.Data);
 %% draw
 figure('visible','off')
 switch FigSet.SubplotModel
     case 'solo'
+        [~,DataRow]= size(FigSet.Data);
         for DataNum = 1:DataRow
             X = FigSet.Data{DataNum}(:,1);
             Y = FigSet.Data{DataNum}(:,2);
@@ -77,16 +77,105 @@ switch FigSet.SubplotModel
         
         
     case 'biax'
-        X1 = FigSet.Data{1}(:,1);Y1 = FigSet.Data{1}(:,2);
-        X2 = FigSet.Data{2}(:,1);Y2 = FigSet.Data{2}(:,2);
-        a = plotyy(X1,Y1,X2,Y2,'plot');
-        xlabel(FigSet.xlabelName,'FontSize',FigSet.Label.FontSize);
-        set(a,'FontSize',FigSet.Label.FontSize)
-        set(get(a(1),'Ylabel'),'String',FigSet.ylabelName{1},'FontSize',FigSet.Label.FontSize)
-        set(get(a(2),'Ylabel'),'String',FigSet.ylabelName{2},'FontSize',FigSet.Label.FontSize)
-        set(a(2),'ycolor','r')
-        
+        left_color = [0,0,1];right_color = [1,0,0];
+        set(gcf,'defaultAxesColorOrder',[left_color; right_color]);
+
+        yyaxis right
+        [~,DataRow]= size(FigSet.Data_right);
+        for DataNum = 1:DataRow
+            X = FigSet.Data_right{DataNum}(:,1);
+            Y = FigSet.Data_right{DataNum}(:,2);
+
+            switch FigSet.PlotModel_right
+                case 'line'
+                    LineType = FigSet.LineType{DataNum};
+                    h = plot(X,Y,LineType,'lineWidth',FigSet.lineWidth);
+                    if isfield(FigSet,'PointFull')
+                        if FigSet.PointFull(DataNum)
+                            set(h,'MarkerFaceColor',get(h,'color'));
+                        end
+                    end
+                case 'point'
+                    PointType = FigSet.PointType{DataNum};
+                    plot(X,Y,PointType,'MarkerSize',FigSet.MarkerSize,'MarkerFaceColor',PointType(2));
+                case 'pointcolorbar'
+                    Z = FigSet.Data{DataNum}(:,3);
+                    scatter(X,Y,FigSet.ScatterSize,Z,'filled');
+            end
+            hold on
+        end
+        hYLabel = ylabel(FigSet.ylabelName_right,'FontSize',FigSet.Label.FontSize);
+
+        if isfield(FigSet,'LabelLimit')
+            [XLimitMin,XLimitMax] = deal(FigSet.LabelLimit.XLimit(1),FigSet.LabelLimit.XLimit(2));
+            [YLimitMin,YLimitMax] = deal(FigSet.LabelLimit.YLimit_right(1),FigSet.LabelLimit.YLimit_right(2));
+            axis([XLimitMin XLimitMax YLimitMin YLimitMax])
+        end
+
+        yyaxis left
+        [~,DataRow]= size(FigSet.Data_left);
+        for DataNum = 1:DataRow
+            X = FigSet.Data_left{DataNum}(:,1);
+            Y = FigSet.Data_left{DataNum}(:,2);
+
+            switch FigSet.PlotModel
+                case 'line'
+                    LineType = FigSet.LineType{DataNum};
+                    h = plot(X,Y,LineType,'lineWidth',FigSet.lineWidth);
+                    if isfield(FigSet,'PointFull')
+                        if FigSet.PointFull(DataNum)
+                            set(h,'MarkerFaceColor',get(h,'color'));
+                        end
+                    end
+                case 'point'
+                    PointType = FigSet.PointType{DataNum};
+                    plot(X,Y,PointType,'MarkerSize',FigSet.MarkerSize,'MarkerFaceColor',PointType(2));
+                case 'pointcolorbar'
+                    Z = FigSet.Data{DataNum}(:,3);
+                    scatter(X,Y,FigSet.ScatterSize,Z,'filled');
+            end
+            hold on
+        end
+        if isfield(FigSet,'global')
+            set(gca,'FontSize',FigSet.global.FontSize,'Fontname', FigSet.global.Fontname,...
+                'linewidth',FigSet.global.linewidth,'FontWeight','bold','tickdir','in');
+        end
+        hXLabel = xlabel(FigSet.xlabelName,'FontSize',FigSet.Label.FontSize);
+        hYLabel = ylabel(FigSet.ylabelName_left,'FontSize',FigSet.Label.FontSize);
+        if isfield(FigSet,'legendName')
+            legend(FigSet.legendName,'FontSize',FigSet.FontSize,...
+                'Location',FigSet.Location,'Box','off');
+        end
+
+        if isfield(FigSet,'LabelLimit')
+            [XLimitMin,XLimitMax] = deal(FigSet.LabelLimit.XLimit(1),FigSet.LabelLimit.XLimit(2));
+            [YLimitMin,YLimitMax] = deal(FigSet.LabelLimit.YLimit_left(1),FigSet.LabelLimit.YLimit_left(2));
+            axis([XLimitMin XLimitMax YLimitMin YLimitMax])
+        end
+
+        % Legend Settings
+        if isfield(FigSet,'legendName')
+            legend(FigSet.legendName,'FontSize',FigSet.FontSize,...
+                'Location',FigSet.Location,'Box','off');
+        end
+
+        if isfield(FigSet,'Xticks')
+            xticks(FigSet.Xticks.LableNum{1});xticklabels(FigSet.Xticks.LableStr{1})
+        end
+
+
+        if isfield(FigSet,'Frame')
+            switch FigSet.Frame
+                case 'grid'
+                    grid on
+                case 'axis'
+                    axis square
+            end
+        end
+
+
     case 'subplot'
+        [DataLine,DataRow]= size(FigSet.Data);
         [SubLine,SubRow] = deal(FigSet.SubComb(1),FigSet.SubComb(2));DataNum = 1;
         for DataLineNum = 1:DataLine
             
