@@ -1,6 +1,9 @@
 function [K,dK] = Cal_Earth_adhere_dK(Mu3,TabList_eff,StnName,StationTime,K_Ref_mean,Base_S_H)
 
 % 根据最小索引序列重新解算确定超参数
+if ~exist(['.\',StnName],'dir')
+	mkdir(['.\',StnName]);
+end
 % 判断保存文件是否存在
 savefile = ['.\',StnName,'\',StnName,'_',num2str(10^Mu3),'.mat'];
 if exist(savefile)
@@ -8,7 +11,7 @@ if exist(savefile)
 else
     
     RESData = struct();
-    SetINIPath = ['.\Settings-prep_TimeSqe_',StnName,'.ini'];
+    SetINIPath = ['.\PlotLib\Settings-prep_TimeSqe_Loose.ini'];
     SetModelMP = ReadSetINI(SetINIPath);
     
     SetModelMP.HyperParameters.Mu3 = 10^Mu3;

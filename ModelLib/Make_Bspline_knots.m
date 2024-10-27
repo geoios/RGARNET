@@ -1,5 +1,5 @@
 function [knots,MPNum,INIData] = Make_Bspline_knots(OBSData,SetModelMP,INIData)
-BSpanModel  = 2;spdeg = 3;
+BSpanModel  = 1;spdeg = 3;
 BSpan = SetModelMP.Inv_parameter.nmp;
 %% matrix is/isn't empty
 if isempty(BSpan)

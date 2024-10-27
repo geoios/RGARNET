@@ -16,4 +16,4 @@ SetINIPath = '.\Settings-prep_TimeSqe_Rigid.ini';
 GNSS_A_Position_Cal(SetINIPath,'TimeSqe_Rigid');
 
 %% OutPut 
-GetCentrePos('Tab2_Free-array_strict_rigid-array_loose-constrained_and_tight-constrained_array_solutions.csv');
+GetCentrePos('Table_2_Free-array_strict_rigid-array_loose-constrained_and_tight-constrained_array_solutions.csv');

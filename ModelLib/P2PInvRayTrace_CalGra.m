@@ -18,15 +18,15 @@ end
 [T,Y,Z,L,theta,Iteration,RayInf] = InvRayTrace(PF,+inf,Horizontal,Depth,PriTheta);
 
 SVPLayerNum = size(PF,1);
-gammar1 = 0;gammar2 = 0;BreakLoop = 0;Depth2 = 350;
+gammar1 = 0;gammar2 = 0;BreakLoop = 0; % Depth2 = 350;
 for i = 1: SVPLayerNum -1
     C0 = PF(i,2);C1 = PF(i+1,2);G = PF(i,4);U0 = PF(i,1);U1 = PF(i+1,1);
     if U1 > Depth
         U1 = Depth;C1 = C0 + (Depth-U0)*G;
         BreakLoop = 1;
-    elseif U1 > Depth2
-        U1 = Depth2;C1 = C0 + (Depth2-U0)*G;
-        BreakLoop = 1;
+%     elseif U1 > Depth2
+%         U1 = Depth2;C1 = C0 + (Depth2-U0)*G;
+%         BreakLoop = 1;
     end
     
     if G ==0

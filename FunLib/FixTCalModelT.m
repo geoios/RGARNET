@@ -47,7 +47,7 @@ for MAXLoop2=1:SetModelMP.Inv_parameter.maxloop
                 RESData(DataNum).MP = RESData(DataNum).MP  + dX';
                 detalX = [detalX;dX(1:RESData(DataNum).MPNum(1))];
             end
-            [dposmax(MAXLoop2),index]  =  max(abs(detalX))
+            [dposmax(MAXLoop2),index]  =  max(abs(detalX));
             if dposmax(MAXLoop2)<ConvCriteria
                 break;
             end
